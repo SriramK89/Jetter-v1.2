@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   validates :name, :presence => true,
                    :uniqueness => true
+  has_many :jets
   # attr_accessible :title, :body
 end

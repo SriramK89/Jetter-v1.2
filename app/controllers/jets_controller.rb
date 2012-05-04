@@ -41,11 +41,13 @@ class JetsController < ApplicationController
   # POST /jets.json
   def create
     @jet = Jet.new(params[:jet])
+    @jet.user_id = current_user.id
 
     respond_to do |format|
       if @jet.save
-        format.html { redirect_to @jet, notice: 'Jet was successfully created.' }
-        format.json { render json: @jet, status: :created, location: @jet }
+        @jets = Jet.all
+        format.html { redirect_to jets_path, notice: 'Jet was successfully created.' }
+        format.json { render json: @jets, status: :created, location: @jet }
       else
         format.html { render action: "new" }
         format.json { render json: @jet.errors, status: :unprocessable_entity }

@@ -33,8 +33,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.text_field :user_id, :value => current_user.id, :class => "invisible_textbox" %>
   </div>
   <div class="field">
     <%= f.label :content %><br />
